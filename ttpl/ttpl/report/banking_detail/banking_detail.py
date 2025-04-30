@@ -8,22 +8,41 @@ def execute(filters=None):
     columns, banks = get_columns(filters)
     _banks = []
     for bank in banks:
-        print(bank)
         if bank.account:
             _banks.append(
-                f"SUM(CASE WHEN pe.paid_to = '{bank.account}' THEN pe.paid_amount ELSE 0 END) AS `{bank.bank}`"
+                f"SUM(CASE WHEN pe.paid_to = '{bank.account}' THEN pe.paid_amount ELSE 0 END) AS `{bank.bank}`",
             )
+
+    supplier_banks = []
+    for bank in banks:
+        if bank.account:
+            supplier_banks.append(
+                f"SUM(CASE WHEN pe.paid_from = '{bank.account}' THEN pe.paid_amount ELSE 0 END) AS `{bank.bank}`",
+            )
+
+    #get customer data bankwise
     customer_sql = f"""
 	SELECT
-		pe.party AS customer,
+		pe.party,
         pe.party_name,
+        (
+            SELECT SUM(pe2.paid_amount)
+            FROM `tabPayment Entry` pe2
+            WHERE pe2.party = pe.party
+            AND pe2.payment_type = 'Receive'
+            AND pe2.mode_of_payment = 'Cash'
+            AND pe2.docstatus = 1
+            AND pe2.posting_date >= '{filters.get("from_date")}'
+            AND pe2.posting_date <= '{filters.get("to_date")}'
+            
+        ) AS cash_accounts,
         {",".join(_banks)}
 	FROM
 		`tabPayment Entry` pe
     LEFT JOIN
 		`tabBank Account` ba ON pe.paid_to = ba.account
 	WHERE
-		payment_type = 'Receive'
+		pe.payment_type = 'Receive'
 		AND pe.docstatus = 1
         AND pe.posting_date >= '{filters.get("from_date")}'
         AND pe.posting_date <= '{filters.get("to_date")}'
@@ -31,10 +50,16 @@ def execute(filters=None):
 		pe.party,
         pe.party_name
     """
+    #get total of customer
+
     total_customer_sql = f"""
     SELECT
         'Total' as customer,
         '' as party_name,
+        SUM(CASE 
+        WHEN pe.mode_of_payment = 'Cash' THEN pe.paid_amount 
+        ELSE 0 
+        END) AS cash_total,
         {",".join(_banks)}
     FROM
         `tabPayment Entry` pe
@@ -46,49 +71,74 @@ def execute(filters=None):
         AND pe.posting_date >= '{filters.get("from_date")}'
         AND pe.posting_date <= '{filters.get("to_date")}'
 	"""
-    # supplier_sql = f"""
-    # SELECT
-	# 	pe.party AS supplier,
-    #     pe.party_name,
-    #     {",".join(_banks)}
-	# FROM
-	# 	`tabPayment Entry` pe
-    # LEFT JOIN
-	# 	`tabBank Account` ba ON pe.paid_to = ba.account
-	# WHERE
-	# 	payment_type = 'Pay'
-	# 	AND pe.docstatus = 1
-    #     AND pe.posting_date >= '{filters.get("from_date")}'
-    #     AND pe.posting_date <= '{filters.get("to_date")}'
-	# GROUP BY
-	# 	pe.party,
-    #     pe.party_name
-    
-    # """
-    # total_supplier_sql = f"""
-    # SELECT
-    #     'Total' as supplier,
-    #     '' as party_name,
-    #     {",".join(_banks)}
-    # FROM
-    #     `tabPayment Entry` pe
-    # LEFT JOIN
-    #     `tabBank Account` ba ON pe.paid_to = ba.account
-    # WHERE
-    #     pe.payment_type = 'Pay'
-    #     AND pe.docstatus = 1
-    #     AND pe.posting_date >= '{filters.get("from_date")}'
-    #     AND pe.posting_date <= '{filters.get("to_date")}'
 
-    # """
-    
+    # get supplier data
+    supplier_sql = f"""
+	SELECT
+		pe.party,
+        pe.party_name,
+        (
+            SELECT SUM(pe2.paid_amount)
+            FROM `tabPayment Entry` pe2
+            WHERE pe2.party = pe.party
+            AND pe2.payment_type = 'Pay'
+            AND pe2.mode_of_payment = 'Cash'
+            AND pe2.docstatus = 1
+            AND pe2.posting_date >= '{filters.get("from_date")}'
+            AND pe2.posting_date <= '{filters.get("to_date")}'
+            
+        ) AS cash_accounts,
+        {",".join(supplier_banks)}
+	FROM
+		`tabPayment Entry` pe
+    LEFT JOIN
+		`tabBank Account` ba ON pe.paid_from = ba.account
+	WHERE
+		pe.payment_type = 'Pay'
+		AND pe.docstatus = 1
+        AND pe.posting_date >= '{filters.get("from_date")}'
+        AND pe.posting_date <= '{filters.get("to_date")}'
+	GROUP BY
+		pe.party,
+        pe.party_name
+    """
+    # Supplier total query
+    total_supplier_sql = f"""
+    SELECT
+        'Total' as supplier,
+        '' as party_name,
+        SUM(CASE 
+        WHEN pe.mode_of_payment = 'Cash' THEN pe.paid_amount 
+        ELSE 0 
+        END) AS cash_total,
+        {",".join(supplier_banks)}
+    FROM
+        `tabPayment Entry` pe
+    LEFT JOIN
+        `tabBank Account` ba ON pe.paid_to = ba.account
+    WHERE
+        pe.payment_type = 'Pay'
+        AND pe.docstatus = 1
+        AND pe.posting_date >= '{filters.get("from_date")}'
+        AND pe.posting_date <= '{filters.get("to_date")}'
+
+    """
     customer_data = frappe.db.sql(customer_sql)
     total_customer = frappe.db.sql(total_customer_sql)
 
-    # supplier_data = frappe.db.sql(supplier_sql)
-    # total_supplier = frappe.db.sql(total_supplier_sql)
+    supplier_data = frappe.db.sql(supplier_sql)
+    total_supplier = frappe.db.sql(total_supplier_sql)
 
-    data = customer_data + total_customer
+    data = list(customer_data + total_customer + supplier_data + total_supplier)
+    
+    #calculating net balance
+    customer_total = total_customer[0][2:]
+    supplier_total = total_supplier[0][2:]
+
+    net_balance = [b- c for b,c in zip(customer_total, supplier_total)]
+    net_balance_row = ("Net Balance", "", *net_balance)
+
+    data.append(net_balance_row)
     return columns, data
 
 
@@ -96,6 +146,7 @@ def get_columns(filters):
     columns = [
         {"fieldname": "party", "fieldtype": "Data", "label": "Party", "width": 200},
         {"fieldname": "party_name", "fieldtype": "Data", "label": "Party Name", "width": 200},
+        {"fieldname": "cash_account", "fieldtype": "Currency", "label": "Cash", "width": 150},
     ]
     banks = frappe.db.get_all(
         "Bank Account",
