@@ -54,7 +54,7 @@ def execute(filters=None):
 
     total_customer_sql = f"""
     SELECT
-        'Total' as customer,
+        '<b>Total</b>' as customer,
         '' as party_name,
         SUM(CASE 
         WHEN pe.mode_of_payment = 'Cash' THEN pe.paid_amount 
@@ -105,7 +105,7 @@ def execute(filters=None):
     # Supplier total query
     total_supplier_sql = f"""
     SELECT
-        'Total' as supplier,
+        '<b>Total</b>' as supplier,
         '' as party_name,
         SUM(CASE 
         WHEN pe.mode_of_payment = 'Cash' THEN pe.paid_amount 
@@ -125,19 +125,26 @@ def execute(filters=None):
     """
     customer_data = frappe.db.sql(customer_sql)
     total_customer = frappe.db.sql(total_customer_sql)
+    blank_row = tuple("-" for _ in range(len(total_customer[0])))
 
     supplier_data = frappe.db.sql(supplier_sql)
     total_supplier = frappe.db.sql(total_supplier_sql)
+    blank_row2 = tuple("-" for _ in range(len(total_supplier[0])))
 
-    data = list(customer_data + total_customer + supplier_data + total_supplier)
+    # data = list(customer_data + total_customer + blank_row + supplier_data + total_supplier)
+    data = list(customer_data + total_customer)
+    data.append(blank_row)
+    data += list(supplier_data + total_supplier)
+    data.append(blank_row2)
     
     #calculating net balance
     customer_total = total_customer[0][2:]
     supplier_total = total_supplier[0][2:]
 
     net_balance = [b- c for b,c in zip(customer_total, supplier_total)]
-    net_balance_row = ("Net Balance", "", *net_balance)
+    net_balance_row = ("<b>Net Balance</b>", "", *net_balance)
 
+    
     data.append(net_balance_row)
     return columns, data
 
