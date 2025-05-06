@@ -1,0 +1,58 @@
+{
+ "cards": [
+  {
+   "card": "Annual Purchase"
+  },
+  {
+   "card": "Purchase Orders to Receive"
+  },
+  {
+   "card": "Purchase Orders to Bill"
+  },
+  {
+   "card": "Active Suppliers"
+  },
+  {
+   "card": "RM Qty"
+  },
+  {
+   "card": "RM  Received Value"
+  },
+  {
+   "card": "Store & Spares Qty"
+  },
+  {
+   "card": "Store & Spares Value"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Purchase Order Trends",
+   "width": "Full"
+  },
+  {
+   "chart": "Material Request Analysis",
+   "width": "Half"
+  },
+  {
+   "chart": "Purchase Order Analysis",
+   "width": "Half"
+  },
+  {
+   "chart": "Top Suppliers",
+   "width": "Full"
+  }
+ ],
+ "creation": "2025-05-06 12:56:25.323691",
+ "dashboard_name": "Buying Dashboard",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2025-05-06 13:10:27.329300",
+ "modified_by": "Administrator",
+ "module": "Ttpl",
+ "name": "Buying Dashboard",
+ "owner": "Administrator"
+}
