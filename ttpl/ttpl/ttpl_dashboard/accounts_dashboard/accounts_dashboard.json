@@ -1,0 +1,64 @@
+{
+ "cards": [
+  {
+   "card": "Total Outgoing Bills"
+  },
+  {
+   "card": "Total Incoming Bills"
+  },
+  {
+   "card": "Total Incoming Payment"
+  },
+  {
+   "card": "Total Outgoing Payment"
+  },
+  {
+   "card": "Total Receiveable"
+  },
+  {
+   "card": "Total Payable Pending"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Profit and Loss",
+   "width": "Full"
+  },
+  {
+   "chart": "Incoming Bills (Purchase Invoice)",
+   "width": "Half"
+  },
+  {
+   "chart": "Outgoing Bills (Sales Invoice)",
+   "width": "Half"
+  },
+  {
+   "chart": "Accounts Receivable Ageing",
+   "width": "Half"
+  },
+  {
+   "chart": "Accounts Payable Ageing",
+   "width": "Half"
+  },
+  {
+   "chart": "Budget Variance",
+   "width": "Full"
+  },
+  {
+   "chart": "Bank Balance",
+   "width": "Full"
+  }
+ ],
+ "creation": "2025-05-06 14:25:24.949382",
+ "dashboard_name": "Accounts Dashboard",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2025-05-06 18:35:25.542840",
+ "modified_by": "Administrator",
+ "module": "Ttpl",
+ "name": "Accounts Dashboard",
+ "owner": "Administrator"
+}
