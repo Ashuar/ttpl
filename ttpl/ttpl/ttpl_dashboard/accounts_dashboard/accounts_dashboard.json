@@ -13,7 +13,7 @@
    "card": "Total Outgoing Payment"
   },
   {
-   "card": "Total Receiveable"
+   "card": "Total Receivable Pending"
   },
   {
    "card": "Total Payable Pending"
@@ -56,7 +56,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2025-05-06 18:35:25.542840",
+ "modified": "2025-05-07 12:10:19.800841",
  "modified_by": "Administrator",
  "module": "Ttpl",
  "name": "Accounts Dashboard",
