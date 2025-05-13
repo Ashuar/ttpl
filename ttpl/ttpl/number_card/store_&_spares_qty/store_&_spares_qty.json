@@ -11,7 +11,8 @@
  "is_public": 1,
  "is_standard": 1,
  "label": "Store & Spares Qty",
- "modified": "2025-05-13 13:28:39.015389",
+ "method": "ttpl.ttpl.number_card.store_&_spares_qty.store_&_spares_qty.qty",
+ "modified": "2025-05-13 16:31:01.643648",
  "modified_by": "Administrator",
  "module": "Ttpl",
  "name": "Store & Spares Qty",
@@ -20,5 +21,5 @@
  "report_function": "Sum",
  "show_percentage_stats": 1,
  "stats_time_interval": "Monthly",
- "type": "Document Type"
+ "type": "Custom"
 }
