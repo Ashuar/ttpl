@@ -1,0 +1,22 @@
+{
+ "creation": "2025-05-13 14:39:01.208797",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "dynamic_filters_json": "",
+ "filters_json": "null",
+ "function": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "label": "RM Received Value",
+ "method": "ttpl.ttpl.number_card.rm_received_value.rm_received_value.received_value",
+ "modified": "2025-05-13 14:40:26.534715",
+ "modified_by": "Administrator",
+ "module": "Ttpl",
+ "name": "RM Received Value",
+ "owner": "Administrator",
+ "report_function": "Sum",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Custom"
+}

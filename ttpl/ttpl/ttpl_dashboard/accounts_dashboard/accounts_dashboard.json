@@ -39,14 +39,6 @@
   {
    "chart": "Accounts Payable Ageing",
    "width": "Half"
-  },
-  {
-   "chart": "Budget Variance",
-   "width": "Full"
-  },
-  {
-   "chart": "Bank Balance",
-   "width": "Full"
   }
  ],
  "creation": "2025-05-06 14:25:24.949382",
@@ -56,9 +48,17 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2025-05-07 12:15:23.178212",
+ "modified": "2025-05-07 12:52:53.439878",
  "modified_by": "Administrator",
  "module": "Ttpl",
  "name": "Accounts Dashboard",
- "owner": "Administrator"
+ "owner": "Administrator",
+ "roles": [
+    {
+     "role": "Accounts User"
+    },
+    {
+     "role": "Accounts Manager"
+    }
+   ]
 }
