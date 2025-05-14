@@ -4,7 +4,7 @@ import frappe
 def rm_qty():
     query = """
     SELECT 
-        SUM(DISTINCT pi.total_qty)
+        SUM(pii.qty)
         FROM `tabPurchase Invoice` as pi
         LEFT JOIN `tabPurchase Invoice Item` as pii ON pii.parent = pi.name
         WHERE pi.docstatus = 1
