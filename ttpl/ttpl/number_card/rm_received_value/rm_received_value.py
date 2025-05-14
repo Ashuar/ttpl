@@ -1,15 +1,15 @@
 import frappe
 
 @frappe.whitelist()
-def received_value():
-    query = """
-    SELECT 
-        SUM(DISTINCT pi.grand_total)
-        FROM `tabPurchase Invoice` as pi
-        LEFT JOIN `tabPurchase Invoice Item` as pii ON pii.parent = pi.name
-        WHERE pi.docstatus = 1
-		AND pii.item_group = 'Raw Material'
-        AND YEAR(pi.posting_date) = YEAR(CURRENT_DATE())
+def calculate_total_receivable():
+    outstand_value = """
+        SELECT 
+            SUM(outstanding_amount)
+        FROM
+            `tabSales Invoice`
+        WHERE 
+            docstatus = 1
     """
-    value = frappe.db.sql(query)
+    value = frappe.db.sql(outstand_value)
+
     return {"value": value, "fieldtype": "Currency"}
