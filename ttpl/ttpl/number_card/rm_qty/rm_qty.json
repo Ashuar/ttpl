@@ -22,5 +22,13 @@
  "report_name": "Item-wise Purchase Register",
  "show_percentage_stats": 1,
  "stats_time_interval": "Monthly",
- "type": "Custom"
+ "type": "Custom",
+ "roles":[
+    {
+        "role": "Accounts User"
+    },
+    {
+        "role": "Accounts Manager"
+    }
+ ]
 }

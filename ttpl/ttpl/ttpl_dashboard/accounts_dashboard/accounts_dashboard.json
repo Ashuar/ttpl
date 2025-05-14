@@ -13,10 +13,13 @@
    "card": "Total Outgoing Payment"
   },
   {
+   "card": "Total Receivable Pending"
+  },
+  {
    "card": "Total Payable Pending"
   },
   {
-   "card": "Total Receivable Pending"
+   "card": "Journal Payable"
   }
  ],
  "charts": [
@@ -48,17 +51,17 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2025-05-07 12:52:53.439878",
+ "modified": "2025-05-14 12:55:42.682829",
  "modified_by": "Administrator",
  "module": "Ttpl",
  "name": "Accounts Dashboard",
  "owner": "Administrator",
- "roles": [
+ "roles":[
     {
-     "role": "Accounts User"
+        "role": "Accounts User"
     },
     {
-     "role": "Accounts Manager"
+        "role": "Accounts Manager"
     }
-   ]
+ ]
 }

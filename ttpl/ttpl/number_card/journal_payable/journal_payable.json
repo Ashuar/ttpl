@@ -1,0 +1,32 @@
+{
+ "creation": "2025-05-14 12:50:04.926459",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "dynamic_filters_json": "{}",
+ "filters_json": "{\"company\":\"Tapal Tex Pvt. Ltd\",\"from_date\":\"2025-04-14\",\"to_date\":\"2025-05-14\",\"group_by\":\"Group by Voucher (Consolidated)\",\"include_dimensions\":1,\"include_default_book_entries\":1}",
+ "function": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "label": "Journal Payable",
+ "method": "ttpl.ttpl.number_card.journal_payable.journal_payable.journal_payable",
+ "modified": "2025-05-14 12:55:27.435654",
+ "modified_by": "Administrator",
+ "module": "Ttpl",
+ "name": "Journal Payable",
+ "owner": "Administrator",
+ "report_field": "balance",
+ "report_function": "Sum",
+ "report_name": "General Ledger",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Custom",
+ "roles":[
+    {
+        "role": "Accounts User"
+    },
+    {
+        "role": "Accounts Manager"
+    }
+ ]
+}
