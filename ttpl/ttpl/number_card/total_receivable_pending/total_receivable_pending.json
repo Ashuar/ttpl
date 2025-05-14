@@ -1,30 +1,25 @@
 {
- "creation": "2025-05-07 12:14:17.366604",
+ "aggregate_function_based_on": "total_qty",
+ "creation": "2025-05-14 16:04:02.608685",
  "docstatus": 0,
  "doctype": "Number Card",
- "dynamic_filters_json": "",
- "filters_json": "null",
- "function": "Count",
+ "document_type": "Sales Invoice",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[[\"Sales Invoice\",\"docstatus\",\"=\",\"1\",false]]",
+ "function": "Sum",
  "idx": 0,
  "is_public": 1,
  "is_standard": 1,
  "label": "Total Receivable Pending",
  "method": "ttpl.ttpl.number_card.total_receivable_pending.total_receivable_pending.calculate_total_receivable",
- "modified": "2025-05-07 12:14:17.366604",
+ "modified": "2025-05-14 16:05:21.385493",
  "modified_by": "Administrator",
  "module": "Ttpl",
  "name": "Total Receivable Pending",
  "owner": "Administrator",
+ "parent_document_type": "",
  "report_function": "Sum",
  "show_percentage_stats": 1,
- "stats_time_interval": "Daily",
- "type": "Custom",
- "roles":[
-    {
-        "role": "Accounts User"
-    },
-    {
-        "role": "Accounts Manager"
-    }
- ]
+ "stats_time_interval": "Monthly",
+ "type": "Custom"
 }
