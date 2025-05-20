@@ -311,7 +311,7 @@ def execute(filters=None):
 
     total_fixed_cost = ho_foh + fc
     total_cost = variable_cost + total_fixed_cost
-    net_profit = sale_price - total_cost
+    net_profit = (sale_price - total_cost) / -1
     
     data.append([
         "Kg",  # UOM fixed
