@@ -1,7 +1,7 @@
 # Copyright (c) 2025, ashuar and contributors
 # For license information, please see license.txt
 
-import frappe
+# import frappe
 
 
 # def execute(filters=None):
@@ -136,7 +136,7 @@ import frappe
     #         continue
     #     columns.append(obj)
     # return columns
-
+import frappe
 def get_columns(banks):
     columns = [
         {"fieldname": "party", "fieldtype": "Data", "label": "Party", "width": 200},
