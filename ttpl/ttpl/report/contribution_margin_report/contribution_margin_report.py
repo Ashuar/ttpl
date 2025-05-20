@@ -30,7 +30,7 @@ def execute(filters=None):
         SELECT ABS(SUM(sle.actual_qty))
         FROM `tabStock Ledger Entry` sle
         JOIN `tabItem` item ON sle.item_code = item.name
-        WHERE item.item_group = 'Finished Goods' AND sle.actual_qty > 0
+        WHERE item.item_group = 'Finished Goods' AND sle.actual_qty > 0 AND sle.docstatus = 1 AND sle.is_cancelled = 0
           AND sle.posting_date BETWEEN %(from_date)s AND %(to_date)s
     """, filters, as_list=True)[0][0] or 0
 
@@ -287,7 +287,7 @@ def execute(filters=None):
         SELECT ABS(SUM(sle.actual_qty) )
          FROM `tabStock Ledger Entry` sle
          JOIN `tabItem` item ON sle.item_code = item.name
-         WHERE item.item_group = 'Finished Goods' AND sle.actual_qty<0
+         WHERE item.item_group = 'Finished Goods' AND sle.actual_qty < 0 AND sle.docstatus = 1 AND sle.is_cancelled = 0
           AND sle.posting_date BETWEEN %(from_date)s AND %(to_date)s
     """, filters, as_list=True)[0][0] or 0
 
