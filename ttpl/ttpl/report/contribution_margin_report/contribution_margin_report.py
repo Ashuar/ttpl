@@ -27,10 +27,10 @@ def execute(filters=None):
         conditions += " AND posting_date <= %(to_date)s"
      # Total Finished Goods Qty
     total_qty = frappe.db.sql("""
-        SELECT SUM(sle.qty_after_transaction)
+        SELECT ABS(SUM(sle.actual_qty))
         FROM `tabStock Ledger Entry` sle
         JOIN `tabItem` item ON sle.item_code = item.name
-        WHERE item.item_group = 'Finished Goods'
+        WHERE item.item_group = 'Finished Goods' AND sle.actual_qty > 0
           AND sle.posting_date BETWEEN %(from_date)s AND %(to_date)s
     """, filters, as_list=True)[0][0] or 0
 
@@ -284,10 +284,10 @@ def execute(filters=None):
  
  # Total Finished Goods Qty
     total_actual_qty = frappe.db.sql("""
-        SELECT SUM(sle.actual_qty) 
+        SELECT ABS(SUM(sle.actual_qty) )
          FROM `tabStock Ledger Entry` sle
          JOIN `tabItem` item ON sle.item_code = item.name
-         WHERE item.item_group = 'Finished Goods'
+         WHERE item.item_group = 'Finished Goods' AND sle.actual_qty<0
           AND sle.posting_date BETWEEN %(from_date)s AND %(to_date)s
     """, filters, as_list=True)[0][0] or 0
 
@@ -297,7 +297,7 @@ def execute(filters=None):
 # sale_price
     toatal_sale_price = frappe.db.sql("""
         SELECT 
-            SUM(CASE WHEN account = '40100001 - Sales - TTPL' THEN debit - credit ELSE 0 END) 
+            ABS(SUM(CASE WHEN account = '40100001 - Sales - TTPL' THEN debit - credit ELSE 0 END))
         FROM `tabGL Entry`
         WHERE posting_date BETWEEN %(from_date)s AND %(to_date)s
     """, filters, as_list=True)[0][0] or 0
