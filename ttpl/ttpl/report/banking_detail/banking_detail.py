@@ -635,7 +635,7 @@ def execute(filters=None):
 
     customer_data = list(customer_rows.values())
 
-    # ------------------- INTERNAL TRANSFERS (LINE-WISE) -------------------
+    # ------------------- INTERNAL TRANSFERS -------------------
     internal_sql = f"""
         SELECT gl.voucher_no, gl.account, gl.debit, gl.credit
         FROM `tabGL Entry` gl
@@ -682,14 +682,27 @@ def execute(filters=None):
     total_supplier = compute_total(supplier_data, "Total (Supplier)")
     total_customer = compute_total(customer_data, "Total (Customer)")
 
-    # ------------------- COMBINE ALL -------------------
+    def merge_rows(row1, row2, subtract=False):
+        result = initialize_row("Grand Total", "")
+        for key in result:
+            result[key] = (row1.get(key, 0)) + ((-1 if subtract else 1) * (row2.get(key, 0)))
+        return result
+
+    intermediate_total = merge_rows(total_customer, internal_total)
+    grand_total = merge_rows(intermediate_total, total_supplier, subtract=True)
+    grand_total["party"] = "Net Total"
+
+    # ------------------- FINAL DATA -------------------
     data = (
         customer_data +
         [total_customer] +
         supplier_data +
         [total_supplier] +
         internal_rows +
-        [internal_total] 
+        [internal_total] +
+        [grand_total]
     )
 
     return columns, data
+
+
