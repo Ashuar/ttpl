@@ -5,14 +5,6 @@
 
 frappe.query_reports["Banking Detail"] = {
 	"filters": [
-		// {
-		// 	"fieldname": "company",
-		// 	"fieldtype": "Link",
-		// 	"label": __("Company"),
-		// 	"options": "Company",	
-		// 	"reqd": 1,
-		// 	"default": frappe.sys_defaults.company
-		// },
 		{
 			"fieldname": "from_date",
 			"fieldtype": "Date",
