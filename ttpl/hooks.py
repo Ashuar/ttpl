@@ -4,6 +4,14 @@ app_publisher = "ashuar"
 app_description = "Tapal Tex customization"
 app_email = "masharfaroo@gmail.com"
 app_license = "MIT"
+# override_whitelisted_methods = {
+#     "ttpl.api.stock_dashboard.get_account_balances": "ttpl.api.stock_dashboard.get_account_balances"
+# }
+
+
+
+
+
 
 # Includes in <head>
 # ------------------

@@ -1,10 +1,10 @@
 {
  "cards": [
   {
-   "card": "Total Sales Bills"
+   "card": "Total Outgoing Bills"
   },
   {
-   "card": "Total Purchase Bills"
+   "card": "Total Incoming Bills"
   },
   {
    "card": "Total Incoming Payment"
@@ -13,13 +13,13 @@
    "card": "Total Outgoing Payment"
   },
   {
-   "card": "Total Receivable Pending"
-  },
-  {
    "card": "Total Payable Pending"
   },
   {
-   "card": "Journal Payable"
+   "card": "Total Receivable Pending"
+  },
+  {
+   "card": "Stock Balance"
   }
  ],
  "charts": [
@@ -51,7 +51,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2025-05-14 16:09:22.126622",
+ "modified": "2025-05-30 18:21:47.412786",
  "modified_by": "Administrator",
  "module": "Ttpl",
  "name": "Accounts Dashboard",
