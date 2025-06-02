@@ -19,7 +19,13 @@
    "card": "Total Receivable Pending"
   },
   {
-   "card": "Stock Balance"
+   "card": "Stock Value"
+  },
+  {
+   "card": "BANK BALANCES"
+  },
+  {
+   "card": "CASH BALANCES"
   }
  ],
  "charts": [
@@ -51,7 +57,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2025-05-30 18:21:47.412786",
+ "modified": "2025-06-02 15:29:09.546424",
  "modified_by": "Administrator",
  "module": "Ttpl",
  "name": "Accounts Dashboard",
