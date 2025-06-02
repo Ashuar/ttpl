@@ -1,0 +1,21 @@
+{
+ "cards": [],
+ "charts": [
+  {
+   "chart": "TTPL Account Balances",
+   "width": "Half"
+  }
+ ],
+ "creation": "2025-05-29 18:39:46.425330",
+ "dashboard_name": "TTPL Accounts",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2025-05-29 18:39:56.019413",
+ "modified_by": "Administrator",
+ "module": "Ttpl",
+ "name": "TTPL Accounts",
+ "owner": "Administrator"
+}

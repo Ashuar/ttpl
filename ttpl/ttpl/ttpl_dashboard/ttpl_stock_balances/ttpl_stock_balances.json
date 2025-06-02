@@ -1,0 +1,21 @@
+{
+ "cards": [],
+ "charts": [
+  {
+   "chart": "TTPL Stock Balances",
+   "width": "Full"
+  }
+ ],
+ "creation": "2025-05-29 16:46:54.890525",
+ "dashboard_name": "TTPL Stock Balances",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2025-05-29 16:46:54.890525",
+ "modified_by": "Administrator",
+ "module": "Ttpl",
+ "name": "TTPL Stock Balances",
+ "owner": "Administrator"
+}
