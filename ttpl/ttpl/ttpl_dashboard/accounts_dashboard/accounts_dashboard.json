@@ -4,31 +4,37 @@
    "card": "Total Sales Bills"
   },
   {
-   "card": "Total Purchase Bills"
-  },
-  {
-   "card": "Total Payable Pending"
-  },
-  {
    "card": "Total Incoming Payment"
   },
   {
-   "card": "Total Outgoing Payment"
-  },
-  {
-   "card": "Journal Payable"
-  },
-  {
-   "card": "Total Receivable Pending"
+   "card": "Trade Dabtors"
   },
   {
    "card": "Stock Balance"
   },
   {
+   "card": "Cash Balances"
+  },
+  {
    "card": "Bank Balances"
   },
   {
-   "card": "Cash Balances"
+   "card": "Total Purchase Bills"
+  },
+  {
+   "card": "Total Outgoing Payment"
+  },
+  {
+   "card": "Creditors"
+  },
+  {
+   "card": "Running Finance Loan"
+  },
+  {
+   "card": "Longterm Loan"
+  },
+  {
+   "card": "Accruals"
   }
  ],
  "charts": [
@@ -60,7 +66,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2025-06-04 12:31:54.360344",
+ "modified": "2025-06-17 10:53:56.206754",
  "modified_by": "Administrator",
  "module": "Ttpl",
  "name": "Accounts Dashboard",
