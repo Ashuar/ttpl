@@ -1,0 +1,21 @@
+{
+ "creation": "2025-06-16 15:47:35.879669",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "filters_json": "null",
+ "function": "Count",
+ "idx": 0,
+ "is_public": 0,
+ "is_standard": 1,
+ "label": " Longterm Loan",
+ "method": "ttpl.ttpl.number_card.longterm_loan.longterm_loan.calculate_longterm_loan",
+ "modified": "2025-06-16 15:51:26.972334",
+ "modified_by": "Administrator",
+ "module": "Ttpl",
+ "name": "Longterm Loan",
+ "owner": "Administrator",
+ "report_function": "Sum",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Custom"
+}
