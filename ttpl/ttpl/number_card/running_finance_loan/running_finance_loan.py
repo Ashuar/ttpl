@@ -11,8 +11,7 @@ except ImportError:
 def calculate_running_finance_loan():
     accounts = [
         "20201001 - PRINCIPAL SHORT TERM LOAN-BAFL - TTPL",
-        "20201002 - PRINCIPAL SHORT TERM LOAN- PCICL - TTPL",
-        
+        "20201002 - PRINCIPAL SHORT TERM LOAN- PCICL - TTPL",    
     ]
     obj = []
     for account in accounts:
