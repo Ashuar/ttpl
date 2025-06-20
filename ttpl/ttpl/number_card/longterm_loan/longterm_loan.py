@@ -11,6 +11,7 @@ def calculate_longterm_loan(company="Tapal Tex Pvt. Ltd"):
     account_names = [
         "20108001 - LONG TERM LOAN  BANK ALFALAH LTD ISLAMIC - TTPL",
         "20108002 - LONGTERM LOAN from PAK CHINA INVESTMENT - TTPL"
+        # "20108002 - LONGTERM LOAN from PAK CHINA INVESTMENT - TTPL"
     ]
 
     accounts = frappe.get_all("Account", filters={"name": ["in", account_names]},
