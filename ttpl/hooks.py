@@ -20,7 +20,7 @@ app_license = "MIT"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/ttpl/css/ttpl.css"
-# app_include_js = "/assets/ttpl/js/ttpl.js"
+app_include_js = "/assets/ttpl/js/ttpl.bundle.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/ttpl/css/ttpl.css"
@@ -118,9 +118,9 @@ app_license = "MIT"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Payment Entry": "ttpl.overrides.payment_entry.CustomPaymentEntry"
+}
 
 # Document Events
 # ---------------
