@@ -119,7 +119,7 @@ app_include_js = "/assets/ttpl/js/ttpl.bundle.js"
 # Override standard doctype classes
 
 override_doctype_class = {
-	"Payment Entry": "ttpl.overrides.payment_entry.CustomPaymentEntry"
+	"Payment Entry": "ttpl.override.payment_entry.CustomPaymentEntry"
 }
 
 # Document Events
