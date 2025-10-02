@@ -63,7 +63,7 @@ class InvalidPaymentEntry(ValidationError):
 	pass
 
 
-class PaymentEntry(AccountsController):
+class CustomPaymentEntry(AccountsController):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		if not self.is_new():
